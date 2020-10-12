@@ -1,4 +1,4 @@
-package challenge.model.entities;
+package challenge.utils;
 
 import java.util.Calendar;
 import java.util.Date;

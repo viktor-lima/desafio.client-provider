@@ -8,7 +8,7 @@ import java.util.Scanner;
 import challenge.fachada.Fachada;
 import challenge.model.entities.Address;
 import challenge.model.entities.Client;
-import challenge.model.entities.Utils;
+import challenge.utils.Utils;
 import exceptions.ClientException;
 
 public class UiClient {
@@ -34,7 +34,7 @@ public class UiClient {
 				break;
 			case 2:
 				System.out.println("CPF do cliente a ser removido");
-				// c.setCpf(sc.next());
+				
 				String cpf = sc.next();
 				try {
 
@@ -43,7 +43,6 @@ public class UiClient {
 					System.out.println();
 					System.out.print("Client removido com sucesso \n \n ");
 				} catch (ClientException e) {
-					// TODO Auto-generated catch block
 					System.out.println(e.getMessage() + "\n");
 				}
 
@@ -58,7 +57,6 @@ public class UiClient {
 
 					System.out.print("clientes removidos com sucesso \n");
 				} catch (ClientException e) {
-					// TODO Auto-generated catch block
 					System.out.println(e.getMsg() + "\n");
 				}
 
@@ -103,6 +101,7 @@ public class UiClient {
 
 			Utils utils = new Utils();
 			c.setAge(utils.calculaIdade(c.getDt_nascimento()));
+			System.out.println(c.getAge());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

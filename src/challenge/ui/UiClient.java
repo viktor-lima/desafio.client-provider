@@ -125,8 +125,6 @@ public class UiClient {
 		Address address = new Address(street, district, number, complement, cep);
 
 		c.setEndereco(address);
-		
-		System.out.println(c);
 
 		try {
 			fachada.addClient(c);

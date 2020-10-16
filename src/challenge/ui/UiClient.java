@@ -72,8 +72,10 @@ public class UiClient {
 
 	public void clientRegistration() {
 		Client c = new Client();
-		System.out.print("digite o seu nome: ");
-		c.setName(sc.next());
+		System.out.print("\ndigite o seu nome: \n");
+		sc.nextLine();
+		c.setName(sc.nextLine());
+		
 		int[] num = new int[1];
 		Random r = new Random();
 
@@ -89,7 +91,7 @@ public class UiClient {
 		}
 		for (int i = 0; i < num.length; i++) {
 			c.setCodigo(num[i]);
-			System.out.println("seu código é: " + c.getCodigo());
+			System.out.println("Olá " + c.getName() + " seu código é: " + c.getCodigo() + "\n");
 		}
 		System.out.print("Digite o seu email: ");
 		c.setEmail(sc.next());
@@ -123,6 +125,8 @@ public class UiClient {
 		Address address = new Address(street, district, number, complement, cep);
 
 		c.setEndereco(address);
+		
+		System.out.println(c);
 
 		try {
 			fachada.addClient(c);

@@ -32,20 +32,20 @@ public class Fachada implements IclientController, IproviderController {
 	}
 
 	@Override
-	public void rmClient(String cpf, Client c) throws ClientException {
+	public void rmClient(String cpf) throws ClientException {
 		// TODO Auto-generated method stub
-		clientController.rmClient(cpf,c);
+		clientController.rmClient(cpf);
 		
 	}
 
 	@Override
-	public void rmClientForName(String name, Client c) throws ClientException {
-		 clientController.rmClientForName(name, c);
+	public void rmClientForName(String name) throws ClientException {
+		 clientController.rmClientForName(name);
 		
 	}
 
 	@Override
-	public Client[] searcheClientForCpf(String cpf) {
+	public Client searcheClientForCpf(String cpf) throws ClientException{
 		// TODO Auto-generated method stub
 		return clientController.searcheClientForCpf(cpf);
 	}

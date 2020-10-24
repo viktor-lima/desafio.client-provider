@@ -8,6 +8,7 @@ import java.util.Scanner;
 import challenge.fachada.Fachada;
 import challenge.model.entities.Address;
 import challenge.model.entities.Client;
+import challenge.repository.ClientRepository;
 import challenge.utils.Utils;
 import exceptions.ClientException;
 
@@ -18,27 +19,30 @@ public class UiClient {
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+	Client c;
+
 	public void showMenu() {
 		sc = new Scanner(System.in);
 		int option;
-		Client c = new Client();
 
 		do {
 			System.out.print("Inserir client - 1ª opção: " + "\nRemove client - 2ª opção: "
 					+ "\nRemover client por name - 3ª opção: " + "\nPesquisar cliente pelo cpf - 4ª opção: ");
 			option = sc.nextInt();
 
+			String cpf;
 			switch (option) {
 			case 1:
 				clientRegistration();
 				break;
 			case 2:
 				System.out.println("CPF do cliente a ser removido");
+				sc.nextLine();
+				cpf = sc.nextLine();
 				
-				String cpf = sc.next();
 				try {
 
-					fachada.rmClient(cpf, c);
+					fachada.rmClient(cpf);
 
 					System.out.println();
 					System.out.print("Client removido com sucesso \n \n ");
@@ -49,11 +53,12 @@ public class UiClient {
 				break;
 			case 3:
 				System.out.println("Nome do cliente a ser removido:");
-				c.setName(sc.next());
+				sc.nextLine();
+				String Name = sc.nextLine();
+				//c.setName(sc.nextLine());
 
 				try {
-					fachada.rmClientForName(c.getCpf(), c);
-					System.out.println();
+					fachada.rmClientForName(Name);
 
 					System.out.print("clientes removidos com sucesso \n");
 				} catch (ClientException e) {
@@ -64,14 +69,25 @@ public class UiClient {
 
 			case 4:
 				System.out.print("Digite o CPF: \n");
-				c.setCpf(sc.next());
+				sc.nextLine();
+				String cpf1 = sc.nextLine();
+				
+				try {
+					fachada.searcheClientForCpf(cpf1);
+					ClientRepository cr = ClientRepository.getInstance();
+					cr.searcheClientForCpf(cpf1);
+					System.out.println(c.getName());
+					
+				} catch (ClientException e) {
+					System.out.println(e.getMsg() + "\n");
+				}
 			}
 		} while (option != 0);
 
 	}
 
 	public void clientRegistration() {
-		Client c = new Client();
+		c = new Client();
 		System.out.print("\ndigite o seu nome: \n");
 		sc.nextLine();
 		c.setName(sc.nextLine());
@@ -111,15 +127,19 @@ public class UiClient {
 		// pegar valores do endereco e criar o objeto endereco
 		System.out.print("-------------CADASTRO DE ENDEREÇO------------ \n");
 		System.out.print("rua:");
-		String street = sc.next();
+		sc.nextLine();
+		String street = sc.nextLine();
 		System.out.print("bairro: ");
-		String district = sc.next();
+		sc.next();
+		String district = sc.nextLine();
 		System.out.print("número: ");
 		int number = sc.nextInt();
 		System.out.print("complemento: ");
-		String complement = sc.next();
+		sc.next();
+		String complement = sc.nextLine();
 		System.out.print("cep: ");
-		String cep = sc.next();
+		sc.next();
+		String cep = sc.nextLine();
 		System.out.println("------------------------------------------- \n");
 
 		Address address = new Address(street, district, number, complement, cep);

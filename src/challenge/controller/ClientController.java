@@ -35,34 +35,39 @@ public class ClientController implements IclientController {
 	}
 
 	@Override
-	public void rmClient(String cpf, Client c) throws ClientException {
+	public void rmClient(String cpf) throws ClientException {
 		// TODO Auto-generated method stub
-		if (clientRepository.existClient(cpf) && c.getCpf().equals(cpf)) {
-			clientRepository.rmClient(cpf, c);
-		} else {
+		if (!clientRepository.existClient(cpf)) {
 			throw new ClientException("Erro: cliente não existe!");
-		}
-
-	}
-
-	@Override
-	public void rmClientForName(String name, Client c) throws ClientException {
-		// TODO Auto-generated method stub
-		if (c.getName().equals(name)) {
-			clientRepository.rmClientForName(name, c);
-
 		} else {
+			clientRepository.rmClient(cpf);
+		}
+
+	}
+
+	@Override
+	public void rmClientForName(String name) throws ClientException {
+		// TODO Auto-generated method stub
+		if (!clientRepository.existClientForName(name)) {
 			throw new ClientException("Erro: Não existe cliente com esse nome!");
+		} else {
+			clientRepository.rmClientForName(name);
+			
 
 		}
 
 	}
 
 	@Override
-	public Client[] searcheClientForCpf(String cpf) {
-		// TODO Auto-generated method stub
-
-		return null;
+	public Client searcheClientForCpf(String cpf) throws ClientException {
+		if(!clientRepository.existClient(cpf))
+			throw new ClientException("Erro: cliente não existe!");
+		else
+			return clientRepository.searcheClientForCpf(cpf);
+			
+			
+		
+		
 	}
 
 	@Override

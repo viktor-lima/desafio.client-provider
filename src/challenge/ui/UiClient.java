@@ -76,7 +76,8 @@ public class UiClient {
 					fachada.searcheClientForCpf(cpf1);
 					ClientRepository cr = ClientRepository.getInstance();
 					cr.searcheClientForCpf(cpf1);
-					System.out.println(c.getName());
+					System.out.print("Cliente: " + c.getName() + " - " + c.getCpf() + "\n");
+					System.out.println();
 					
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");

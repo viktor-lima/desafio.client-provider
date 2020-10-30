@@ -37,7 +37,7 @@ public class ClientController implements IclientController {
 	@Override
 	public void rmClient(String cpf) throws ClientException {
 		// TODO Auto-generated method stub
-		if (!clientRepository.existClient(cpf)) {
+		if (clientRepository.existClient(cpf) != true) {
 			throw new ClientException("Erro: cliente não existe!");
 		} else {
 			clientRepository.rmClient(cpf);

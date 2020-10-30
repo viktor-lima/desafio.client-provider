@@ -33,7 +33,8 @@ public class ClientRepository implements IclientRepository {
 
 		for (Client c : listaCliente) {
 			if (listaCliente != null && c.getCpf().equals(cpf)) {
-				listaCliente.remove(cpf);
+				listaCliente.remove(c);
+				return;
 			}
 		}
 	}

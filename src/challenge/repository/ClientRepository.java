@@ -45,7 +45,8 @@ public class ClientRepository implements IclientRepository {
 
 		for (Client c : listaCliente) {
 			if (listaCliente != null && c.getName().equals(name)) {
-				listaCliente.remove(name);
+				listaCliente.remove(c);
+				return;
 			}
 		}
 

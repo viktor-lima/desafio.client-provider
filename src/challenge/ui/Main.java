@@ -17,7 +17,7 @@ public class Main {
 		
 		int opcao;
 		
-		System.out.println("Escolha uma opção: \n1 - Area do Cliente \n2 - Area da Administração");
+		System.out.println("Escolha uma opção: \n1 - Área do Cliente \n2 - Área Fornecedor");
 		opcao = sc.nextInt();
 		
 		switch (opcao) {

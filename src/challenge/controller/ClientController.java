@@ -52,7 +52,6 @@ public class ClientController implements IclientController {
 			throw new ClientException("Erro: Não existe cliente com esse nome!");
 		} else {
 			clientRepository.rmClientForName(name);
-			
 
 		}
 
@@ -60,20 +59,19 @@ public class ClientController implements IclientController {
 
 	@Override
 	public Client searcheClientForCpf(String cpf) throws ClientException {
-		if(!clientRepository.existClient(cpf))
+		if (!clientRepository.existClient(cpf))
 			throw new ClientException("Erro: cliente não existe!");
 		else
 			return clientRepository.searcheClientForCpf(cpf);
-			
-			
-		
-		
+
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+	public Client[] searcheClientForDistrict(String district) throws ClientException {
+		if (!clientRepository.existClientForDistrict(district))
+			throw new ClientException("Erro: cliente não existe!");
+		else
+			return clientRepository.searcheClientForDistrict(district);
 	}
 
 }

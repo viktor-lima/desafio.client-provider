@@ -8,6 +8,8 @@ public interface IclientRepository {
 	public boolean existClient(String cpf);
 	
 	public boolean existClientForName(String name);
+	
+	public boolean existClientForDistrict(String District);
 
 	public void addClient(Client c) throws ClientException;
 
@@ -17,6 +19,6 @@ public interface IclientRepository {
 
 	public Client searcheClientForCpf(String cpf) throws ClientException;
 
-	public Client[] searcheClientForDistrict(Client c);
+	public Client[] searcheClientForDistrict(String district) throws ClientException;
 
 }

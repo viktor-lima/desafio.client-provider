@@ -13,6 +13,6 @@ public interface IclientController {
 
 	public Client searcheClientForCpf(String cpf) throws ClientException;
 
-	public Client[] searcheClientForDistrict(Client c);
+	public Client[] searcheClientForDistrict(String district) throws ClientException;
 
 }

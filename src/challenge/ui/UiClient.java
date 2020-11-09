@@ -26,9 +26,13 @@ public class UiClient {
 		int option;
 
 		do {
-			System.out.print("Inserir client - 1ª opção: " + "\nRemove client - 2ª opção: "
-					+ "\nRemover client por name - 3ª opção: " + "\nPesquisar cliente pelo cpf - 4ª opção: ");
+			System.out.print("1ª opção: Inserir client; "
+					+ "\n2ª opção: Remove client; "
+					+ "\n3ª opção: Remover client por name; " 
+					+ "\n4ª opção: Pesquisar cliente pelo cpf; "
+					+ "\n5ª opção: Pesquisar client por bairro; ");
 			option = sc.nextInt();
+			;
 
 			String cpf;
 			switch (option) {
@@ -76,12 +80,28 @@ public class UiClient {
 					fachada.searcheClientForCpf(cpf1);
 					ClientRepository cr = ClientRepository.getInstance();
 					cr.searcheClientForCpf(cpf1);
-					System.out.print("Cliente: " + c.getName() + " - " + c.getCpf() + "\n");
+					System.out.print("\n Cliente: " + c.getName() + " - " + c.getCpf() + "\n");
 					System.out.println();
 					
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");
 				}
+				break;
+			case 5:
+				System.out.print("Digite o bairro: \n");
+				sc.nextLine();
+				String district = sc.nextLine();
+				
+				try {
+					fachada.searcheClientForDistrict(district);
+					ClientRepository cr = ClientRepository.getInstance();
+					cr.searcheClientForDistrict(district);
+					System.out.print("\n Clientes: " + c.getName() + " - " + c.getEndereco().getDistrict() + " - " + c.getCpf() + "\n");
+				} catch (ClientException e) {
+					System.out.println(e.getMsg() + "\n");
+				}
+				
+				
 			}
 		} while (option != 0);
 
@@ -126,24 +146,32 @@ public class UiClient {
 		}
 
 		// pegar valores do endereco e criar o objeto endereco
+		Address address = new Address();
 		System.out.print("-------------CADASTRO DE ENDEREÇO------------ \n");
 		System.out.print("rua:");
 		sc.nextLine();
-		String street = sc.nextLine();
+		//String street = sc.nextLine();
+		address.setStreet(sc.nextLine());
 		System.out.print("bairro: ");
-		sc.next();
-		String district = sc.nextLine();
+		//sc.nextLine();
+		//String district = sc.nextLine();
+		address.setDistrict(sc.nextLine());
+		//System.out.println();
+		//sc.nextLine();
 		System.out.print("número: ");
-		int number = sc.nextInt();
+		//int number = sc.nextInt();
+		address.setNumber(sc.nextInt());
 		System.out.print("complemento: ");
-		sc.next();
-		String complement = sc.nextLine();
+		sc.nextLine();
+		//String complement = sc.nextLine();
+		address.setComplement(sc.nextLine());
 		System.out.print("cep: ");
-		sc.next();
-		String cep = sc.nextLine();
+		//sc.nextLine();
+		//String cep = sc.nextLine();
+		address.setCep(sc.nextLine());
 		System.out.println("------------------------------------------- \n");
 
-		Address address = new Address(street, district, number, complement, cep);
+		
 
 		c.setEndereco(address);
 
@@ -155,6 +183,8 @@ public class UiClient {
 		} catch (ClientException e) {
 			System.out.println(e.getMessage() + "\n");
 		}
+		
+		
 
 	}
 

@@ -64,10 +64,34 @@ public class ClientRepository implements IclientRepository {
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(Client c) {
-		// TODO Auto-generated method stub
-
-		return null;
+	public Client[] searcheClientForDistrict(String district) throws ClientException{
+		
+		Client[] clients = null;
+		int cont = 0;
+		
+		for (Client client : listaCliente) {
+			//
+			if (listaCliente != null && client.getEndereco().getDistrict().equalsIgnoreCase(district)) {
+				cont++;
+			}
+		}
+		if (cont > 0) {
+			
+			clients = new Client[cont];
+			int aux = 0;
+			
+			for (Client client : listaCliente) {
+				if (listaCliente != null  && client.getEndereco().getDistrict().equalsIgnoreCase(district)){
+					clients[aux] = listaCliente.get(aux);
+					aux++;
+					return clients;
+				}
+			}
+				
+		}
+		
+		
+	return null;
 	}
 
 	@Override
@@ -83,6 +107,16 @@ public class ClientRepository implements IclientRepository {
 	public boolean existClientForName(String name) {
 		for (Client client : listaCliente) {
 			if (client.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean existClientForDistrict(String district) {
+		for (Client client : listaCliente) {
+			if (client.getEndereco().getDistrict().equalsIgnoreCase(district)) {
 				return true;
 			}
 		}

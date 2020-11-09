@@ -51,9 +51,8 @@ public class Fachada implements IclientController, IproviderController {
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+	public Client[] searcheClientForDistrict(String district) throws ClientException {
+		return clientController.searcheClientForDistrict(district);
 	}
 
 }

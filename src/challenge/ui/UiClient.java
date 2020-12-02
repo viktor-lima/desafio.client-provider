@@ -26,10 +26,8 @@ public class UiClient {
 		int option;
 
 		do {
-			System.out.print("1ª opção: Inserir client; "
-					+ "\n2ª opção: Remove client; "
-					+ "\n3ª opção: Remover client por name; " 
-					+ "\n4ª opção: Pesquisar cliente pelo cpf; "
+			System.out.print("1ª opção: Inserir client; " + "\n2ª opção: Remove client; "
+					+ "\n3ª opção: Remover client por name; " + "\n4ª opção: Pesquisar cliente pelo cpf; "
 					+ "\n5ª opção: Pesquisar client por bairro; ");
 			option = sc.nextInt();
 			;
@@ -43,7 +41,7 @@ public class UiClient {
 				System.out.println("CPF do cliente a ser removido");
 				sc.nextLine();
 				cpf = sc.nextLine();
-				
+
 				try {
 
 					fachada.rmClient(cpf);
@@ -59,7 +57,7 @@ public class UiClient {
 				System.out.println("Nome do cliente a ser removido:");
 				sc.nextLine();
 				String Name = sc.nextLine();
-				//c.setName(sc.nextLine());
+				// c.setName(sc.nextLine());
 
 				try {
 					fachada.rmClientForName(Name);
@@ -75,14 +73,14 @@ public class UiClient {
 				System.out.print("Digite o CPF: \n");
 				sc.nextLine();
 				String cpf1 = sc.nextLine();
-				
+
 				try {
 					fachada.searcheClientForCpf(cpf1);
 					ClientRepository cr = ClientRepository.getInstance();
 					cr.searcheClientForCpf(cpf1);
 					System.out.print("\n Cliente: " + c.getName() + " - " + c.getCpf() + "\n");
 					System.out.println();
-					
+
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");
 				}
@@ -91,17 +89,17 @@ public class UiClient {
 				System.out.print("Digite o bairro: \n");
 				sc.nextLine();
 				String district = sc.nextLine();
-				
+
 				try {
 					fachada.searcheClientForDistrict(district);
 					ClientRepository cr = ClientRepository.getInstance();
 					cr.searcheClientForDistrict(district);
-					System.out.print("\n Clientes: " + c.getName() + " - " + c.getEndereco().getDistrict() + " - " + c.getCpf() + "\n");
+					System.out.print("\n Clientes: " + c.getName() + " - " + c.getEndereco().getDistrict() + " - "
+							+ c.getCpf() + "\n");
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");
 				}
-				
-				
+
 			}
 		} while (option != 0);
 
@@ -112,7 +110,7 @@ public class UiClient {
 		System.out.print("\ndigite o seu nome: \n");
 		sc.nextLine();
 		c.setName(sc.nextLine());
-		
+
 		int[] num = new int[1];
 		Random r = new Random();
 
@@ -150,28 +148,22 @@ public class UiClient {
 		System.out.print("-------------CADASTRO DE ENDEREÇO------------ \n");
 		System.out.print("rua:");
 		sc.nextLine();
-		//String street = sc.nextLine();
+		
 		address.setStreet(sc.nextLine());
 		System.out.print("bairro: ");
-		//sc.nextLine();
-		//String district = sc.nextLine();
+		
 		address.setDistrict(sc.nextLine());
-		//System.out.println();
-		//sc.nextLine();
+		
 		System.out.print("número: ");
-		//int number = sc.nextInt();
+
 		address.setNumber(sc.nextInt());
 		System.out.print("complemento: ");
 		sc.nextLine();
-		//String complement = sc.nextLine();
 		address.setComplement(sc.nextLine());
 		System.out.print("cep: ");
-		//sc.nextLine();
-		//String cep = sc.nextLine();
+
 		address.setCep(sc.nextLine());
 		System.out.println("------------------------------------------- \n");
-
-		
 
 		c.setEndereco(address);
 
@@ -183,8 +175,6 @@ public class UiClient {
 		} catch (ClientException e) {
 			System.out.println(e.getMessage() + "\n");
 		}
-		
-		
 
 	}
 

@@ -58,20 +58,20 @@ public class ClientController implements IclientController {
 	}
 
 	@Override
-	public Client searcheClientForCpf(String cpf) throws ClientException {
+	public Client searcheClientByCpf(String cpf) throws ClientException {
 		if (!clientRepository.existClient(cpf))
 			throw new ClientException("Erro: cliente não existe!");
 		else
-			return clientRepository.searcheClientForCpf(cpf);
+			return clientRepository.searcheClientByCpf(cpf);
 
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(String district) throws ClientException {
+	public Client[] searcheClientByDistrict(String district) throws ClientException {
 		if (!clientRepository.existClientForDistrict(district))
 			throw new ClientException("Erro: cliente não existe!");
 		else
-			return clientRepository.searcheClientForDistrict(district);
+			return clientRepository.searcheClientByDistrict(district);
 	}
 
 }

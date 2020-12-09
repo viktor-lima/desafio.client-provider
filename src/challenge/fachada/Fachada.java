@@ -45,14 +45,14 @@ public class Fachada implements IclientController, IproviderController {
 	}
 
 	@Override
-	public Client searcheClientForCpf(String cpf) throws ClientException{
+	public Client searcheClientByCpf(String cpf) throws ClientException{
 		// TODO Auto-generated method stub
-		return clientController.searcheClientForCpf(cpf);
+		return clientController.searcheClientByCpf(cpf);
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(String district) throws ClientException {
-		return clientController.searcheClientForDistrict(district);
+	public Client[] searcheClientByDistrict(String district) throws ClientException {
+		return clientController.searcheClientByDistrict(district);
 	}
 
 }

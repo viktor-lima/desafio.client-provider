@@ -72,10 +72,10 @@ public class UiClient {
 				String cpf1 = sc.nextLine();
 
 				try {
-					fachada.searcheClientForCpf(cpf1);
+					fachada.searcheClientByCpf(cpf1);
 					ClientRepository cr = ClientRepository.getInstance();
-					cr.searcheClientForCpf(cpf1);
-					Client c = fachada.searcheClientForCpf(cpf1);
+					cr.searcheClientByCpf(cpf1);
+					Client c = fachada.searcheClientByCpf(cpf1);
 					if (c != null) {
 						System.out.print(c.toString());
 					} else {
@@ -94,7 +94,7 @@ public class UiClient {
 				String district = sc.nextLine();
 
 				try {
-					fachada.searcheClientForDistrict(district);
+					fachada.searcheClientByDistrict(district);
 
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");

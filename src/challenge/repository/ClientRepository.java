@@ -53,7 +53,7 @@ public class ClientRepository implements IclientRepository {
 	}
 
 	@Override
-	public Client searcheClientForCpf(String cpf) throws ClientException {
+	public Client searcheClientByCpf(String cpf) throws ClientException {
 		// TODO Auto-generated method stub
 		for (Client client : listaCliente) {
 			if (listaCliente != null && client.getCpf().equals(cpf)) {
@@ -64,7 +64,7 @@ public class ClientRepository implements IclientRepository {
 	}
 
 	@Override
-	public Client[] searcheClientForDistrict(String district) throws ClientException{
+	public Client[] searcheClientByDistrict(String district) throws ClientException{
 		
 		Client[] clients = null;
 		int cont = 0;

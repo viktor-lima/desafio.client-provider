@@ -11,8 +11,8 @@ public interface IclientController {
 
 	public void rmClientForName(String name) throws ClientException;
 
-	public Client searcheClientForCpf(String cpf) throws ClientException;
+	public Client searcheClientByCpf(String cpf) throws ClientException;
 
-	public Client[] searcheClientForDistrict(String district) throws ClientException;
+	public Client[] searcheClientByDistrict(String district) throws ClientException;
 
 }

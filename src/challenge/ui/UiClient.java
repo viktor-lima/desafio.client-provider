@@ -19,7 +19,7 @@ public class UiClient {
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-	Client c;
+
 
 	public void showMenu() {
 		sc = new Scanner(System.in);
@@ -57,7 +57,7 @@ public class UiClient {
 				System.out.println("Nome do cliente a ser removido:");
 				sc.nextLine();
 				String Name = sc.nextLine();
-				// c.setName(sc.nextLine());
+				
 
 				try {
 					fachada.rmClientForName(Name);
@@ -78,7 +78,8 @@ public class UiClient {
 					fachada.searcheClientForCpf(cpf1);
 					ClientRepository cr = ClientRepository.getInstance();
 					cr.searcheClientForCpf(cpf1);
-					System.out.print("\n Cliente: " + c.getName() + " - " + c.getCpf() + "\n");
+					Client c  = fachada.searcheClientForCpf(cpf1);
+					System.out.print(c.toString());
 					System.out.println();
 
 				} catch (ClientException e) {
@@ -92,10 +93,7 @@ public class UiClient {
 
 				try {
 					fachada.searcheClientForDistrict(district);
-					ClientRepository cr = ClientRepository.getInstance();
-					cr.searcheClientForDistrict(district);
-					System.out.print("\n Clientes: " + c.getName() + " - " + c.getEndereco().getDistrict() + " - "
-							+ c.getCpf() + "\n");
+					
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");
 				}
@@ -106,7 +104,7 @@ public class UiClient {
 	}
 
 	public void clientRegistration() {
-		c = new Client();
+		Client c = new Client();
 		System.out.print("\ndigite o seu nome: \n");
 		sc.nextLine();
 		c.setName(sc.nextLine());

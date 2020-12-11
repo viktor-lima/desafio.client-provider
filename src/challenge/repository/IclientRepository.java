@@ -1,5 +1,7 @@
 package challenge.repository;
 
+import java.util.List;
+
 import challenge.model.entities.Client;
 import exceptions.ClientException;
 

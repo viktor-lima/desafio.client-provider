@@ -64,36 +64,30 @@ public class ClientRepository implements IclientRepository {
 	}
 
 	@Override
-	public Client[] searcheClientByDistrict(String district) throws ClientException{
-		
+	public Client[] searcheClientByDistrict(String district) throws ClientException {
+
 		Client[] clients = null;
 		int cont = 0;
-		
+
 		for (Client client : listaCliente) {
-			//
 			if (listaCliente != null && client.getEndereco().getDistrict().equalsIgnoreCase(district)) {
 				cont++;
 			}
 		}
 		if (cont > 0) {
-			
+
 			clients = new Client[cont];
 			int aux = 0;
-			
+
 			for (Client client : listaCliente) {
-				if (listaCliente != null  && client.getEndereco().getDistrict().equalsIgnoreCase(district)){
-					clients[aux] = listaCliente.get(aux);
+				if (listaCliente != null && client.getEndereco().getDistrict().equalsIgnoreCase(district)) {
+					clients[aux] = client;
 					aux++;
-					return clients;
-				}
+				}	
 			}
-				
+			return clients;
 		}
-		
-		
-		
-		
-	return null;
+		return null;
 	}
 
 	@Override

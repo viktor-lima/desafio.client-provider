@@ -86,7 +86,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client \n codigo: " + codigo + "\n  name: " + name + "\n age: " + age + "\n email: " + email + "\n cpf: " + cpf;
+		return "Client: \n codigo: " + codigo + "\n name: " + name + "\n age: " + age + "\n email: " + email + "\n cpf: " + cpf;
 				
 	}
 	

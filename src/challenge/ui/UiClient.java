@@ -2,6 +2,7 @@ package challenge.ui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -95,6 +96,16 @@ public class UiClient {
 
 				try {
 					fachada.searcheClientByDistrict(district);
+					ClientRepository cr = ClientRepository.getInstance();
+					cr.searcheClientByDistrict(district);
+					Client[] c = fachada.searcheClientByDistrict(district);
+					if (c != null) {
+						for(int i=0; i<c.length; i++) {
+							System.out.println(c[i] + "\n");
+						}
+					} else {
+						System.out.println("Client não encontrado");
+					}
 
 				} catch (ClientException e) {
 					System.out.println(e.getMsg() + "\n");

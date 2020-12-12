@@ -25,8 +25,8 @@ public class UiClient {
 		int option;
 
 		do {
-			System.out.print("1ª opção: Inserir client; " + "\n2ª opção: Remove client; "
-					+ "\n3ª opção: Remover client por name; " + "\n4ª opção: Pesquisar cliente pelo cpf; "
+			System.out.print("1ª opção: Inserir client; " + "\n2ª opção: Remover cliente; "
+					+ "\n3ª opção: Remover cliente por nome; " + "\n4ª opção: Pesquisar cliente pelo cpf; "
 					+ "\n5ª opção: Pesquisar client por bairro; ");
 			option = sc.nextInt();
 
@@ -126,7 +126,7 @@ public class UiClient {
 	}
 
 	public void removeClient() {
-		System.out.println("CPF do cliente a ser removido");
+		System.out.print("CPF do cliente a ser removido: ");
 		sc.nextLine();
 		String cpf = sc.nextLine();
 

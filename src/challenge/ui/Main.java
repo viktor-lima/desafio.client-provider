@@ -28,7 +28,7 @@ public class Main {
 			
 		case 2:
 			UiProvider UiProvider = new UiProvider();
-			
+			UiProvider.showMenu();
 				
 			break;
 		

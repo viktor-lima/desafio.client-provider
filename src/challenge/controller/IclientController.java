@@ -1,7 +1,5 @@
 package challenge.controller;
 
-import java.util.List;
-
 import challenge.model.entities.Client;
 import exceptions.ClientException;
 

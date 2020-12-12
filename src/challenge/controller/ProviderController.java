@@ -3,7 +3,6 @@ package challenge.controller;
 import challenge.model.entities.Provider;
 import challenge.repository.IproviderReporitory;
 import challenge.repository.ProviderRepository;
-import exceptions.ClientException;
 import exceptions.ProviderException;
 
 public class ProviderController implements IproviderController{
@@ -22,15 +21,23 @@ public class ProviderController implements IproviderController{
 		providerRepository = ProviderRepository.getInstance();
 	}
 	@Override
-	public void insertProvider(Provider c) throws ProviderException {
-		if (providerRepository.existProvider(c.getCnpj())) {
+	public void insertProvider(Provider p) throws ProviderException {
+		if (providerRepository.existProvider(p.getCnpj())) 
 			throw new ProviderException("Erro: fornecedor já existe!");
-		}
+		else
+			providerRepository.insertProvider(p);
 		
 	}
 	@Override
-	public void deleteProvider(Provider c) throws ProviderException {
-		// TODO Auto-generated method stub
+	public void deleteProvider(String cnpj) throws ProviderException {
+		if (!providerRepository.existProvider(cnpj)) 
+			throw new ProviderException("Erro: fornecedor não existe!");
+		
+		else
+			providerRepository.deleteProvider(cnpj);
+			
+			
+		
 		
 	}
 	@Override
@@ -39,7 +46,7 @@ public class ProviderController implements IproviderController{
 		
 	}
 	@Override
-	public void searcheProviderByCep(Provider c) throws ProviderException {
+	public void searcheProviderByCep(Provider p) throws ProviderException {
 		// TODO Auto-generated method stub
 		
 	}

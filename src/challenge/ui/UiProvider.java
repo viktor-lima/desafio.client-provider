@@ -7,6 +7,7 @@ import java.util.Scanner;
 import challenge.fachada.Fachada;
 import challenge.model.entities.Address;
 import challenge.model.entities.Provider;
+import exceptions.ProviderException;
 
 public class UiProvider {
 
@@ -53,7 +54,16 @@ public class UiProvider {
 	}
 
 	private void deleteProvider() {
-		// TODO Auto-generated method stub
+		System.out.println("Digite o CNPJ:");
+		String cnpj = sc.next();
+
+		try {
+			fachada.deleteProvider(cnpj);
+			System.out.println("Fornecedor removido com sucesso");
+		} catch (ProviderException e) {
+			
+			System.out.println(e.getMessage() + "\n");
+		}
 
 	}
 
@@ -83,29 +93,34 @@ public class UiProvider {
 
 		Address address = new Address();
 		System.out.print("-------------CADASTRO DE ENDEREÇO------------ \n");
-		
+
 		System.out.print("rua:");
 		address.setStreet(sc.nextLine());
-		
+
 		System.out.print("bairro: ");
 		address.setDistrict(sc.nextLine());
-		
+
 		System.out.print("número: ");
 		address.setNumber(sc.nextInt());
-		
+
 		System.out.print("complemento: ");
 		sc.nextLine();
 		address.setComplement(sc.nextLine());
-		
+
 		System.out.print("cep: ");
 		address.setCep(sc.nextLine());
-		
+
 		System.out.println("------------------------------------------- \n");
-		
+
 		provider.setAddress(address);
-		
-		System.out.println(provider);
-		
+
+		try {
+			fachada.insertProvider(provider);
+			System.out.println("Fornecedor cadastrado com sucesso!");
+		} catch (ProviderException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage() + "\n");
+		}
 
 	}
 

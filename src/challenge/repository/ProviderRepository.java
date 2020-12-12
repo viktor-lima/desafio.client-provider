@@ -22,13 +22,18 @@ public class ProviderRepository implements IproviderReporitory{
 		listProvider = new ArrayList<Provider>();
 	}
 	@Override
-	public void insertProvider(Provider c) throws ProviderException {
-		// TODO Auto-generated method stub
+	public void insertProvider(Provider p) throws ProviderException {
+		listProvider.add(p);
 		
 	}
 	@Override
-	public void deleteProvider(Provider c) throws ProviderException {
-		// TODO Auto-generated method stub
+	public void deleteProvider(String cnpj) throws ProviderException {
+		for (Provider p : listProvider) {
+			if (listProvider != null && p.getCnpj().equals(cnpj)) {
+				listProvider.remove(p);
+				return;
+			}
+		}
 		
 	}
 	@Override
@@ -37,7 +42,7 @@ public class ProviderRepository implements IproviderReporitory{
 		
 	}
 	@Override
-	public void searcheProviderByCep(Provider c) throws ProviderException {
+	public void searcheProviderByCep(Provider p) throws ProviderException {
 		// TODO Auto-generated method stub
 		
 	}

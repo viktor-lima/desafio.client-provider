@@ -62,17 +62,16 @@ public class Fachada implements IclientController, IproviderController {
 	
 
 	@Override
-	public void insertProvider(Provider c) throws ProviderException {
-		providerController.insertProvider(c);
+	public void insertProvider(Provider p) throws ProviderException {
+		providerController.insertProvider(p);
 		
 	}
 
 	@Override
-	public void deleteProvider(Provider c) throws ProviderException {
-		// TODO Auto-generated method stub
+	public void deleteProvider(String  cnpj) throws ProviderException {
+		providerController.deleteProvider(cnpj);
 		
 	}
-
 	@Override
 	public void earcheProviderByCnpj(String cnpj) throws ProviderException {
 		// TODO Auto-generated method stub

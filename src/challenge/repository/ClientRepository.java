@@ -40,7 +40,7 @@ public class ClientRepository implements IclientRepository {
 	}
 
 	@Override
-	public void rmClientForName(String name) throws ClientException {
+	public void rmClientByName(String name) throws ClientException {
 		// TODO Auto-generated method stub
 
 		for (Client c : listaCliente) {

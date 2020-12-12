@@ -17,7 +17,7 @@ public interface IclientRepository {
 
 	public void rmClient(String cpf) throws ClientException;
 
-	public void rmClientForName(String name) throws ClientException;
+	public void rmClientByName(String name) throws ClientException;
 
 	public Client searcheClientByCpf(String cpf) throws ClientException;
 

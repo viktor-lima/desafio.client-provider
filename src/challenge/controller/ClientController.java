@@ -48,12 +48,12 @@ public class ClientController implements IclientController {
 	}
 
 	@Override
-	public void rmClientForName(String name) throws ClientException {
+	public void rmClientByName(String name) throws ClientException {
 		// TODO Auto-generated method stub
 		if (!clientRepository.existClientForName(name)) {
 			throw new ClientException("Erro: Não existe cliente com esse nome!");
 		} else {
-			clientRepository.rmClientForName(name);
+			clientRepository.rmClientByName(name);
 
 		}
 

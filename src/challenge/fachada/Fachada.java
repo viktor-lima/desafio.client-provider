@@ -41,8 +41,8 @@ public class Fachada implements IclientController, IproviderController {
 	}
 
 	@Override
-	public void rmClientForName(String name) throws ClientException {
-		 clientController.rmClientForName(name);
+	public void rmClientByName(String name) throws ClientException {
+		 clientController.rmClientByName(name);
 		
 	}
 

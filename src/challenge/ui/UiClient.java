@@ -29,87 +29,23 @@ public class UiClient {
 					+ "\n3ª opção: Remover client por name; " + "\n4ª opção: Pesquisar cliente pelo cpf; "
 					+ "\n5ª opção: Pesquisar client por bairro; ");
 			option = sc.nextInt();
-			;
 
-			String cpf;
 			switch (option) {
 			case 1:
 				clientRegistration();
 				break;
 			case 2:
-				System.out.println("CPF do cliente a ser removido");
-				sc.nextLine();
-				cpf = sc.nextLine();
-
-				try {
-
-					fachada.rmClient(cpf);
-
-					System.out.println();
-					System.out.print("Client removido com sucesso \n \n ");
-				} catch (ClientException e) {
-					System.out.println(e.getMessage() + "\n");
-				}
-
+				removeClient();
 				break;
 			case 3:
-				System.out.println("Nome do cliente a ser removido:");
-				sc.nextLine();
-				String Name = sc.nextLine();
-
-				try {
-					fachada.rmClientForName(Name);
-
-					System.out.print("clientes removidos com sucesso \n");
-				} catch (ClientException e) {
-					System.out.println(e.getMsg() + "\n");
-				}
-
+				removeClientByName();
 				break;
-
 			case 4:
-				System.out.print("Digite o CPF: \n");
-				sc.nextLine();
-				String cpf1 = sc.nextLine();
-
-				try {
-					fachada.searcheClientByCpf(cpf1);
-					ClientRepository cr = ClientRepository.getInstance();
-					cr.searcheClientByCpf(cpf1);
-					Client c = fachada.searcheClientByCpf(cpf1);
-					if (c != null) {
-						System.out.print(c.toString());
-					} else {
-						System.out.println("Client não encontrado");
-					}
-
-					System.out.println();
-
-				} catch (ClientException e) {
-					System.out.println(e.getMsg() + "\n");
-				}
+				searcheClientByCpf();
 				break;
 			case 5:
-				System.out.print("Digite o bairro: \n");
-				sc.nextLine();
-				String district = sc.nextLine();
-
-				try {
-					fachada.searcheClientByDistrict(district);
-					ClientRepository cr = ClientRepository.getInstance();
-					cr.searcheClientByDistrict(district);
-					Client[] c = fachada.searcheClientByDistrict(district);
-					if (c != null) {
-						for(int i=0; i<c.length; i++) {
-							System.out.println(c[i] + "\n");
-						}
-					} else {
-						System.out.println("Client não encontrado");
-					}
-
-				} catch (ClientException e) {
-					System.out.println(e.getMsg() + "\n");
-				}
+				searcheClientByDistrict();
+				break;
 
 			}
 		} while (option != 0);
@@ -175,7 +111,7 @@ public class UiClient {
 
 		address.setCep(sc.nextLine());
 		System.out.println("------------------------------------------- \n");
-
+		//set address da classe Address no endereco da classe Client
 		c.setEndereco(address);
 
 		try {
@@ -189,4 +125,79 @@ public class UiClient {
 
 	}
 
+	public void removeClient() {
+		System.out.println("CPF do cliente a ser removido");
+		sc.nextLine();
+		String cpf = sc.nextLine();
+
+		try {
+
+			fachada.rmClient(cpf);
+
+			System.out.println();
+			System.out.print("Client removido com sucesso \n \n ");
+		} catch (ClientException e) {
+			System.out.println(e.getMessage() + "\n");
+		}
+	}
+
+	public void removeClientByName() {
+		System.out.println("Nome do cliente a ser removido:");
+		sc.nextLine();
+		String Name = sc.nextLine();
+
+		try {
+			fachada.rmClientByName(Name);
+
+			System.out.print("clientes removidos com sucesso \n");
+		} catch (ClientException e) {
+			System.out.println(e.getMsg() + "\n");
+		}
+	}
+
+	public void searcheClientByCpf() {
+		System.out.print("Digite o CPF: \n");
+		sc.nextLine();
+		String cpf1 = sc.nextLine();
+
+		try {
+			fachada.searcheClientByCpf(cpf1);
+			ClientRepository cr = ClientRepository.getInstance();
+			cr.searcheClientByCpf(cpf1);
+			Client c = fachada.searcheClientByCpf(cpf1);
+			if (c != null) {
+				System.out.print(c.toString());
+			} else {
+				System.out.println("Client não encontrado");
+			}
+
+			System.out.println();
+
+		} catch (ClientException e) {
+			System.out.println(e.getMsg() + "\n");
+		}
+	}
+
+	public void searcheClientByDistrict() {
+		System.out.print("Digite o bairro: \n");
+		sc.nextLine();
+		String district = sc.nextLine();
+
+		try {
+			fachada.searcheClientByDistrict(district);
+			ClientRepository cr = ClientRepository.getInstance();
+			cr.searcheClientByDistrict(district);
+			Client[] c = fachada.searcheClientByDistrict(district);
+			if (c != null) {
+				for (int i = 0; i < c.length; i++) {
+					System.out.println(c[i] + "\n");
+				}
+			} else {
+				System.out.println("Client não encontrado");
+			}
+
+		} catch (ClientException e) {
+			System.out.println(e.getMsg() + "\n");
+		}
+	}
 }

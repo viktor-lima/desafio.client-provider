@@ -27,6 +27,8 @@ public class Main {
 			break;
 			
 		case 2:
+			UiProvider UiProvider = new UiProvider();
+			
 				
 			break;
 		

@@ -9,8 +9,8 @@ public interface IproviderController {
 	
 	public void deleteProvider(String cnpj) throws ProviderException;
 	
-	public void earcheProviderByCnpj(String cnpj) throws ProviderException;
+	public Provider searcheProviderByTypeOfService(String tipo) throws ProviderException;
 	
-	public void searcheProviderByCep(Provider p) throws ProviderException;
+	public Provider[] searcheProviderByCep(Provider p) throws ProviderException;
 	
 }

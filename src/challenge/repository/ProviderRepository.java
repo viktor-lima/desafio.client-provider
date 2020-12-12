@@ -37,12 +37,22 @@ public class ProviderRepository implements IproviderReporitory{
 		
 	}
 	@Override
-	public void earcheProviderByCnpj(String cnpj) throws ProviderException {
-		// TODO Auto-generated method stub
+	public Provider searcheProviderByTypeOfService(String tipo) throws ProviderException {
+		
+		for (Provider p : listProvider) {
+			if (listProvider != null && p.getTypeOfService().equals(tipo)) {
+				return p;
+			}
+		}
+		
+		
+		return null;
+		
 		
 	}
 	@Override
-	public void searcheProviderByCep(Provider p) throws ProviderException {
+	public Provider[] searcheProviderByCep(Provider p) throws ProviderException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
@@ -50,6 +60,16 @@ public class ProviderRepository implements IproviderReporitory{
 	public boolean existProvider(String cpf) {
 		for (Provider p : listProvider) {
 			if (p.getCnpj().equals(cpf)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean existProviderTypeService(String tipo) {
+		for (Provider p : listProvider) {
+			if (p.getTypeOfService().equals(tipo)){
 				return true;
 			}
 		}

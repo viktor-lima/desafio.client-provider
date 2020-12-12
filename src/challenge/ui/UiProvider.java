@@ -7,6 +7,8 @@ import java.util.Scanner;
 import challenge.fachada.Fachada;
 import challenge.model.entities.Address;
 import challenge.model.entities.Provider;
+import challenge.repository.ClientRepository;
+import challenge.repository.ProviderRepository;
 import exceptions.ProviderException;
 
 public class UiProvider {
@@ -33,7 +35,7 @@ public class UiProvider {
 				deleteProvider();
 				break;
 			case 3:
-				searcheProviderByCnpj();
+				searcheProviderByTypeOfService();
 				break;
 			case 4:
 				searcheProviderByCep();
@@ -48,8 +50,21 @@ public class UiProvider {
 
 	}
 
-	private void searcheProviderByCnpj() {
-		// TODO Auto-generated method stub
+	private void searcheProviderByTypeOfService() {
+		System.out.println("Digite o tipo do serviço do fornecedor: ");
+		String tipo = sc.next();
+
+		try {
+			Provider p = fachada.searcheProviderByTypeOfService(tipo);
+			if (p != null) {
+				System.out.print(p.toString() + "\n");
+			} else {
+				System.out.println("Client não encontrado");
+			}
+		} catch (ProviderException e) {
+
+			System.out.println(e.getMessage() + "\n");
+		}
 
 	}
 
@@ -59,9 +74,11 @@ public class UiProvider {
 
 		try {
 			fachada.deleteProvider(cnpj);
-			System.out.println("Fornecedor removido com sucesso");
-		} catch (ProviderException e) {
 			
+			System.out.println("Fornecedor removido com sucesso \n");
+			
+		} catch (ProviderException e) {
+
 			System.out.println(e.getMessage() + "\n");
 		}
 

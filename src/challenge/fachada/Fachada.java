@@ -73,13 +73,14 @@ public class Fachada implements IclientController, IproviderController {
 		
 	}
 	@Override
-	public void earcheProviderByCnpj(String cnpj) throws ProviderException {
-		// TODO Auto-generated method stub
+	public Provider searcheProviderByTypeOfService(String tipo) throws ProviderException {
+		return providerController.searcheProviderByTypeOfService(tipo);
 		
 	}
 
 	@Override
-	public void searcheProviderByCep(Provider c) throws ProviderException {
+	public Provider[] searcheProviderByCep(Provider c) throws ProviderException {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

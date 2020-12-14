@@ -51,8 +51,12 @@ public class ProviderController implements IproviderController {
 	}
 
 	@Override
-	public Provider[] searcheProviderByCep(Provider p) throws ProviderException {
-		return null;
+	public Provider[] searcheProviderByCep(String cep) throws ProviderException {
+		if(!providerRepository.existProviderCep(cep))
+			throw new ProviderException("Erro: Não existe fornecedor com  este cep!");
+		else
+			return providerRepository.searcheProviderByCep(cep);
+	
 		
 
 	}

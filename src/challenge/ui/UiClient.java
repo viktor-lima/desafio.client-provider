@@ -27,7 +27,8 @@ public class UiClient {
 		do {
 			System.out.print("1ª opção: Inserir client; " + "\n2ª opção: Remover cliente; "
 					+ "\n3ª opção: Remover cliente por nome; " + "\n4ª opção: Pesquisar cliente pelo cpf; "
-					+ "\n5ª opção: Pesquisar client por bairro; ");
+					+ "\n5ª opção: Pesquisar client por bairro;"
+					+ "\n6ª opção: back to menu; \n");
 			option = sc.nextInt();
 
 			switch (option) {
@@ -45,6 +46,10 @@ public class UiClient {
 				break;
 			case 5:
 				searcheClientByDistrict();
+				break;
+			case 6:
+				Main main = new Main();
+				main.main(null);
 				break;
 
 			}
@@ -185,8 +190,7 @@ public class UiClient {
 
 		try {
 			fachada.searcheClientByDistrict(district);
-			ClientRepository cr = ClientRepository.getInstance();
-			cr.searcheClientByDistrict(district);
+			
 			Client[] c = fachada.searcheClientByDistrict(district);
 			if (c != null) {
 				for (int i = 0; i < c.length; i++) {

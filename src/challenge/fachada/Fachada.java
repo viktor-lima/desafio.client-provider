@@ -79,9 +79,9 @@ public class Fachada implements IclientController, IproviderController {
 	}
 
 	@Override
-	public Provider[] searcheProviderByCep(Provider c) throws ProviderException {
-		return null;
-		// TODO Auto-generated method stub
+	public Provider[] searcheProviderByCep(String cep) throws ProviderException {
+		return providerController.searcheProviderByCep(cep);
+		
 		
 	}
 

@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 import challenge.fachada.Fachada;
 import challenge.model.entities.Address;
+import challenge.model.entities.Client;
 import challenge.model.entities.Provider;
 import challenge.repository.ClientRepository;
 import challenge.repository.ProviderRepository;
+import exceptions.ClientException;
 import exceptions.ProviderException;
 
 public class UiProvider {
@@ -46,7 +48,23 @@ public class UiProvider {
 	}
 
 	private void searcheProviderByCep() {
-		// TODO Auto-generated method stub
+		System.out.print("Digite o CEP do fornecedor: ");
+		String cep = sc.next();
+
+		try {
+			fachada.searcheProviderByCep(cep);
+			Provider[] p = fachada.searcheProviderByCep(cep);
+			if (p != null) {
+				for (int i = 0; i < p.length; i++) {
+					System.out.println(p[i] + "\n");
+				}
+			} else {
+				System.out.println("Fornecedor não encontrado");
+			}
+
+		} catch (ProviderException e) {
+			System.out.println(e.getMsg() + "\n");
+		}
 
 	}
 
@@ -74,9 +92,9 @@ public class UiProvider {
 
 		try {
 			fachada.deleteProvider(cnpj);
-			
+
 			System.out.println("Fornecedor removido com sucesso \n");
-			
+
 		} catch (ProviderException e) {
 
 			System.out.println(e.getMessage() + "\n");

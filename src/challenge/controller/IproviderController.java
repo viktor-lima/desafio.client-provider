@@ -11,6 +11,6 @@ public interface IproviderController {
 	
 	public Provider searcheProviderByTypeOfService(String tipo) throws ProviderException;
 	
-	public Provider[] searcheProviderByCep(Provider p) throws ProviderException;
+	public Provider[] searcheProviderByCep(String  cep) throws ProviderException;
 	
 }
